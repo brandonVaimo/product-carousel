@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { DragScrollModule } from "ngx-drag-scroll";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 
 import { AppComponent } from './app.component';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ThemeToggleComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    DragScrollModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
