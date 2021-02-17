@@ -1,7 +1,8 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
   <app-theme-toggle></app-theme-toggle>
-  <h1 class="navigation-header">What are you <b>here to do ?</b></h1>
+  <h1 class="navigation-header">
+    What are you <b>here to do ?</b>
+  </h1>
   <drag-scroll #nav [ngClass]="{
       'item1': currentIndex === 0,
       'item2': currentIndex === 1,
@@ -12,8 +13,8 @@
     <div drag-scroll-item class="product-cards" 
          [ngClass]="{'active': currentIndex === 0}"
          (click)="moveTo(0)">
-      <img src="assets/Block.png" *ngIf="theme=='mtn'">
-      <img src="assets/Block-Dark.png" *ngIf="theme=='mtn-dark'">
+      <img src="assets/Block.png" *ngIf="theme ==='mtn'">
+      <img src="assets/Block-Dark.png" *ngIf="theme ==='mtn-dark'">
       <p>Mobile Internet</p>
       <a class="action primary">START HERE &nbsp; <fa-icon [icon]="arrowRight"></fa-icon></a>
     </div>

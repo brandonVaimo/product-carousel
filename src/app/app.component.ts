@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit, Renderer2 } from "@angular/core";
 import { DragScrollComponent } from "ngx-drag-scroll";
-import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component'
 import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+
 import { ThemeService } from './services/theme.service';
 
 @Component({
@@ -10,10 +10,9 @@ import { ThemeService } from './services/theme.service';
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  title = "CodeSandbox";
+  theme: string;
+  title = "product-carousel";
   currentIndex = 0;
-  indexChanged:any;
-  theme: any;
   arrowRight = faChevronRight;
   arrowLeft = faChevronLeft;
 
@@ -21,7 +20,7 @@ export class AppComponent {
 
   constructor(private themeService: ThemeService, private renderer: Renderer2){}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
     this.themeService.themeChanges().subscribe((theme) => {
       if (theme.oldValue) {
         this.renderer.removeClass(document.body, theme.oldValue);
@@ -31,32 +30,29 @@ export class AppComponent {
     })
   }
 
-  ngAfterViewInit() {
-    // Starting ngx-drag-scroll from specified index(3)
+  ngAfterViewInit(): void {
     setTimeout(() => {
       this.moveTo(2);
     }, 0);
     this.currentIndex = this.ds.currIndex;
-    console.log('test');
   }
 
-  moveLeft() {
+  moveLeft(): void {
     this.ds.moveLeft();
     if (this.currentIndex !== 0) {
       this.currentIndex -= 1;
     }
   }
 
-  moveRight() {
+  moveRight(): void {
     this.ds.moveRight();
     if (this.currentIndex !== 4) {
       this.currentIndex += 1;
     }
   }
 
-  moveTo(index) {
+  moveTo(index): void {
     this.ds.moveTo(index);
     this.currentIndex = index;
-        console.log(this.ds.currIndex);
   }
 }
